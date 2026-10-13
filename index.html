@@ -1,1 +1,296 @@
-https://github.com/Anonymouso-dev/GesperrteSpieleUmgehen
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10131a">
+<meta name="description" content="Gesperrte Spiele Umgehen – kostenlose Browsergames und kleine Spiele für zwischendurch.">
+<title>Gesperrte Spiele Umgehen</title>
+<style>
+:root {
+  --bg:#10131a; --panel:#191e28; --border:#2b3140;
+  --text:#f4f5f7; --muted:#a1a8b8; --accent:#a3e635;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.container{width:min(1050px,92%);margin:auto}
+header{border-bottom:1px solid var(--border);background:#10131af5}
+.nav{min-height:76px;display:flex;align-items:center;gap:13px}
+.logo{width:44px;height:44px;display:grid;place-items:center;
+background:var(--accent);color:#10131a;border-radius:12px;font-size:25px}
+.brand{font-weight:800;line-height:1.3}
+.tagline{font-size:11px;color:var(--muted);letter-spacing:2px}
+.hero{padding:65px 0 38px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:2px}
+h1{font-size:clamp(36px,7vw,60px);line-height:1.08;letter-spacing:-2px;margin:14px 0}
+.hero p,.muted{color:var(--muted)}
+.hero p{max-width:570px}
+.search{display:flex;gap:10px;max-width:620px;margin-top:25px}
+input{min-width:0;flex:1;padding:13px 15px;background:var(--panel);
+color:var(--text);border:1px solid var(--border);border-radius:11px}
+.primary{border:0;background:var(--accent);color:#151a0d;font-weight:800;
+padding:12px 18px;border-radius:10px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:20px 0}
+h2{font-size:23px;margin:0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filter{padding:8px 15px;border-radius:30px;border:1px solid var(--border);
+background:var(--panel);color:var(--text)}
+.filter.active{background:var(--accent);color:#10131a;border-color:var(--accent);font-weight:800}
+.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-bottom:55px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.card:hover{border-color:#718c3b}
+.art{aspect-ratio:16/9;display:grid;place-items:center;font-size:62px}
+.space{background:linear-gradient(135deg,#263d65,#171a30)}
+.memory{background:linear-gradient(135deg,#523c67,#282036)}
+.reaction{background:linear-gradient(135deg,#24574f,#172c34)}
+.number{background:linear-gradient(135deg,#55472a,#28251d)}
+.card-body{padding:15px}
+.card h3{margin:0 0 3px;font-size:18px}
+.card p{margin:0 0 15px;color:var(--muted);font-size:13px}
+.play{width:100%;padding:10px;border:1px solid var(--border);
+background:#242a37;color:white;border-radius:9px;font-weight:700}
+.play:hover{border-color:var(--accent);color:var(--accent)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px}
+.about{padding:25px;margin:0 0 55px;background:var(--panel);
+border:1px solid var(--border);border-radius:15px}
+footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:12px}
+dialog{width:min(480px,92%);background:var(--panel);color:var(--text);
+border:1px solid var(--border);border-radius:16px;padding:22px}
+dialog::backdrop{background:#000b}
+.game-area{text-align:center;padding:18px 0}
+.big{font-size:38px;font-weight:800;color:var(--accent);margin:12px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:15px 0}
+.tile{min-height:55px;border:1px solid var(--border);border-radius:9px;
+background:#2b3242;color:white;font-size:23px}
+.tile:disabled{opacity:1}
+.modal-actions{display:flex;gap:10px}
+.modal-actions button{flex:1}
+[hidden]{display:none!important}
+@media(max-width:700px){.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.hero{padding-top:43px}}
+@media(max-width:420px){.games{grid-template-columns:1fr}.search{flex-direction:column}.brand{font-size:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">🎮</div>
+    <div>
+      <div class="brand">Gesperrte Spiele Umgehen</div>
+      <div class="tagline">BROWSER GAMING</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="eyebrow">DEIN SPIEL. DEINE PAUSE.</div>
+    <h1>Weniger suchen.<br>Mehr spielen.</h1>
+    <p>Entdecke kleine Browsergames für zwischendurch.
+    Kostenlos, unkompliziert und direkt im Browser spielbar.</p>
+    <div class="search">
+      <input id="search" type="search" placeholder="Spiele suchen..." aria-label="Spiele suchen">
+      <button class="primary" id="searchBtn">Suchen</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Alle Spiele</h2>
+      <span class="muted" id="count">4 Spiele</span>
+    </div>
+    <div class="filters" aria-label="Kategorien">
+      <button class="filter active" data-cat="all">Alle</button>
+      <button class="filter" data-cat="Arcade">Arcade</button>
+      <button class="filter" data-cat="Puzzle">Puzzle</button>
+      <button class="filter" data-cat="Geschicklichkeit">Geschicklichkeit</button>
+    </div>
+
+    <div class="games" id="games">
+      <article class="card" data-cat="Arcade" data-name="space explorer weltraum">
+        <div class="art space">🚀</div>
+        <div class="card-body">
+          <h3>Space Explorer</h3><p>Arcade · Sammle Punkte</p>
+          <button class="play" data-game="space">Jetzt spielen →</button>
+        </div>
+      </article>
+      <article class="card" data-cat="Puzzle" data-name="memory match gedächtnis">
+        <div class="art memory">🧩</div>
+        <div class="card-body">
+          <h3>Memory Match</h3><p>Puzzle · Finde alle Paare</p>
+          <button class="play" data-game="memory">Jetzt spielen →</button>
+        </div>
+      </article>
+      <article class="card" data-cat="Geschicklichkeit" data-name="reaction test reflexe">
+        <div class="art reaction">⚡</div>
+        <div class="card-body">
+          <h3>Reaction Test</h3><p>Reflexe · Wie schnell bist du?</p>
+          <button class="play" data-game="reaction">Jetzt spielen →</button>
+        </div>
+      </article>
+      <article class="card" data-cat="Puzzle" data-name="zahlen spiel number puzzle">
+        <div class="art number">🔢</div>
+        <div class="card-body">
+          <h3>Zahlen-Challenge</h3><p>Puzzle · Merke dir die Zahlen</p>
+          <button class="play" data-game="number">Jetzt spielen →</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>Gaming, einfach gemacht.</h2>
+    <p class="muted">Finde neue Herausforderungen und spiele direkt
+    auf dieser Seite. Die Sammlung wird mit der Zeit erweitert.</p>
+  </section>
+</main>
+
+<footer><div class="container">© <span id="year"></span> Gesperrte Spiele Umgehen · Mit ❤️ für Browsergames gemacht.</div></footer>
+
+<dialog id="modal">
+  <h2 id="gameTitle">Spiel</h2>
+  <p class="muted" id="info">Viel Spaß!</p>
+  <div class="game-area" id="area"></div>
+  <div class="modal-actions">
+    <button class="primary" id="restart">Neu starten</button>
+    <button class="play" id="close">Schließen</button>
+  </div>
+</dialog>
+
+<script>
+const $=s=>document.querySelector(s);
+const cards=[...document.querySelectorAll(".card")];
+let cat="all",game="",score=0,timer=null,phase="",start=0,first=null,locked=false,matches=0;
+
+$("#year").textContent=new Date().getFullYear();
+
+function filterGames(){
+  const q=$("#search").value.toLowerCase().trim();
+  let count=0;
+  cards.forEach(c=>{
+    c.hidden=!(c.dataset.name.includes(q)&&(cat==="all"||c.dataset.cat===cat));
+    if(!c.hidden)count++;
+  });
+  $("#count").textContent=count+(count===1?" Spiel":" Spiele");
+  let empty=$(".empty");
+  if(!count&&!empty){
+    empty=document.createElement("div");empty.className="empty";
+    empty.textContent="Keine Spiele gefunden. Versuche einen anderen Suchbegriff.";
+    $("#games").append(empty);
+  }
+  if(count&&empty)empty.remove();
+}
+$("#search").addEventListener("input",filterGames);
+$("#searchBtn").addEventListener("click",filterGames);
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{
+  cat=b.dataset.cat;
+  document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));
+  filterGames();
+}));
+
+function startGame(g){
+  clearTimeout(timer);game=g;score=0;first=null;locked=false;matches=0;phase="ready";
+  $("#area").replaceChildren();$("#area").style.background="";
+  $("#gameTitle").textContent={space:"🚀 Space Explorer",memory:"🧩 Memory Match",reaction:"⚡ Reaction Test",number:"🔢 Zahlen-Challenge"}[g];
+  $("#info").textContent="Viel Spaß beim Spielen!";
+  const area=$("#area");
+  function big(text){const e=document.createElement("div");e.className="big";e.textContent=text;return e;}
+  function btn(text,fn){
+    const b=document.createElement("button");b.className="primary";b.textContent=text;b.addEventListener("click",fn);return b;
+  }
+
+  if(g==="space"){
+    const points=big("0 Punkte");
+    const target=btn("🚀 KLICK MICH!",()=>{score++;points.textContent=score+" Punkte";});
+    target.style.width="100%";target.style.padding="25px";
+    area.append(points,target);
+    $("#info").textContent="Klicke so oft du kannst!";
+  }
+
+  if(g==="memory"){
+    const symbols=["🚀","🌙","⭐","🪐","🚀","🌙","⭐","🪐"];
+    symbols.sort(()=>Math.random()-.5);
+    const grid=document.createElement("div");grid.className="tiles";
+    symbols.forEach(symbol=>{
+      const t=document.createElement("button");t.className="tile";t.textContent="❔";
+      t.dataset.symbol=symbol;
+      t.addEventListener("click",()=>{
+        if(locked||t.disabled||t===first)return;
+        t.textContent=symbol;
+        if(!first){first=t;return;}
+        if(first.dataset.symbol===symbol){
+          first.disabled=true;t.disabled=true;first=null;matches++;
+          if(matches===4)$("#info").textContent="Gewonnen! Alle Paare gefunden 🎉";
+        }else{
+          locked=true;const prev=first;first=null;
+          setTimeout(()=>{prev.textContent="❔";t.textContent="❔";locked=false;},650);
+        }
+      });
+      grid.append(t);
+    });
+    area.append(grid);
+  }
+
+  if(g==="reaction"){
+    const status=big("Bereit?");
+    const target=btn("Start",()=>{
+      if(phase==="ready"||phase==="result"||phase==="early"){
+        phase="waiting";target.disabled=true;target.textContent="Warte auf Grün...";
+        status.textContent="⏳";area.style.background="#252b38";
+        timer=setTimeout(()=>{
+          phase="go";start=performance.now();target.disabled=false;
+          target.textContent="JETZT KLICKEN!";area.style.background="#285c36";
+        },1200+Math.random()*2500);
+      }else if(phase==="waiting"){
+        clearTimeout(timer);phase="early";target.disabled=false;
+        target.textContent="Nochmal testen";status.textContent="Zu früh! 😅";
+        area.style.background="";
+      }else if(phase==="go"){
+        const ms=Math.round(performance.now()-start);phase="result";
+        status.textContent=ms+" ms";target.textContent="Nochmal testen";
+        area.style.background="";
+        $("#info").textContent="Deine Reaktionszeit: "+ms+" Millisekunden.";
+      }
+    });
+    target.style.width="100%";area.append(status,target);
+  }
+
+  if(g==="number"){
+    let answer=[];
+    const status=big("Bereit?");
+    const target=btn("Zahlen zeigen",()=>{
+      if(phase!=="ready"&&phase!=="result")return;
+      phase="show";answer=Array.from({length:5},()=>Math.floor(Math.random()*10));
+      status.textContent=answer.join(" ");
+      target.disabled=true;target.textContent="Merke sie dir...";
+      timer=setTimeout(()=>{
+        phase="guess";status.textContent="Welche Zahlen waren es?";
+        target.disabled=false;target.textContent="Antwort anzeigen";
+      },1800);
+    });
+    target.addEventListener("click",()=>{
+      if(phase!=="guess")return;
+      phase="result";status.textContent=answer.join(" ");
+      target.textContent="Nochmal spielen";
+      $("#info").textContent="Vergleiche die Zahlen mit deinem Gedächtnis!";
+    });
+    area.append(status,target);
+  }
+
+  if(!$("#modal").open)$("#modal").showModal();
+}
+$("#games").addEventListener("click",e=>{
+  const b=e.target.closest("[data-game]");
+  if(b)startGame(b.dataset.game);
+});
+$("#restart").addEventListener("click",()=>startGame(game));
+$("#close").addEventListener("click",()=>$("#modal").close());
+$("#modal").addEventListener("close",()=>{clearTimeout(timer);$("#area").style.background="";});
+</script>
+</body>
+</html>
+
